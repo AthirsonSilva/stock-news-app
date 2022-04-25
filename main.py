@@ -66,14 +66,14 @@ if difference > 1:
     # to send a separate message with each article's title and description to your phone number.
     # TODO 8. - Create a new list of the first 3 article's headline and description using list comprehension.
     formatted_articles = [
-        f"Headline: {article['title']}, \nBrief: {article['description']}" for article in three_articles]
+        f"TSLA: {int(difference)}%\nHeadline: {article['title']}, \nBrief: {article['description']}" for article in three_articles]
 
     # TODO 9. - Send each article as a separate message via Twilio.
     client = Client(TWILIO_ACCOUNT_SID, TWILIO_TOKEN)
     for article in formatted_articles:
         message = client.messages.create(
-            from=TWILIO_PHONE_NUMBER,
             body=article,
+            from_=TWILIO_PHONE_NUMBER,
             to=MY_PHONE_NUMBER,
         )
 
